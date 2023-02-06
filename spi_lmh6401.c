@@ -73,6 +73,7 @@ int main() {
   bi_decl(bi_1pin_with_name(PICO_DEFAULT_SPI_CSN_PIN, "SPI CS"));
 
   // wait for connection from USB host
+  // it is crucial to wait before attempting to read from the FIFO, otherwise the host will not be able to properly connect
   while (!stdio_usb_connected()) {
     printf(".");
     sleep_ms(500);
